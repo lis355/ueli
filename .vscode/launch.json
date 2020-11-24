@@ -1,0 +1,47 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug main process",
+			"type": "node",
+			"request": "launch",
+			// "preLaunchTask": "npm: bundle",
+			"program": "${workspaceRoot}/src/main/main.ts",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}",
+			"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd",
+			"runtimeArgs": [
+				"--enable-logging"
+			],
+			"env": {},
+			"sourceMaps": true,
+			"outFiles": [
+				"${workspaceRoot}/bundle/**/*.js"
+			],
+			"internalConsoleOptions": "openOnSessionStart",
+			"console": "integratedTerminal"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Jest Tests",
+			"program": "${workspaceRoot}/node_modules/.bin/jest",
+			"args": [
+				"--config",
+				"jest.json",
+				"--runInBand"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "neverOpen"
+		},
+		{
+			"type": "chrome",
+			"request": "attach",
+			"name": "Electron Renderer",
+			"port": 9223,
+			"webRoot": "${workspaceFolder}",
+			"timeout": 10000
+		}
+	]
+}

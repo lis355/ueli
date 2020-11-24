@@ -27,6 +27,11 @@ const mainConfig = {
     target: "electron-main",
     node: false,
     devtool,
+    watch: true,
+    watchOptions: {
+        aggregateTimeout: 500,
+        ignored: /node_modules/
+    }
 }
 
 const rendererConfig = {

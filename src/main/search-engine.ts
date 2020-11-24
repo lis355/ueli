@@ -38,13 +38,13 @@ export class SearchEngine {
         this.translationSet = translationSet;
         this.config = config;
         this.logExecution = logExecution,
-        this.searchPlugins = searchPlugins;
+            this.searchPlugins = searchPlugins;
         this.executionPlugins = executionPlugins;
         this.fallbackPlugins = fallbackPlugins;
         this.favoriteManager = new FavoriteManager(favoriteRepository, translationSet);
     }
 
-    public  getSearchResults(userInput: string): Promise<SearchResultItem[]> {
+    public getSearchResults(userInput: string): Promise<SearchResultItem[]> {
         return new Promise((resolve, reject) => {
             if (userInput === undefined || userInput.length === 0) {
                 resolve([]);
@@ -214,7 +214,7 @@ export class SearchEngine {
                         });
                     }
 
-                    const sorted = fuseResult.sort((a: FuseResult, b: FuseResult) => a.score  - b.score);
+                    const sorted = fuseResult.sort((a: FuseResult, b: FuseResult) => a.score - b.score);
                     const filtered = sorted.map((item: FuseResult): SearchResultItem => item.item);
                     let sliced = filtered.slice(0, this.config.maxSearchResults);
 
@@ -259,7 +259,7 @@ export class SearchEngine {
             searchResults.push(result);
         }
 
-        return(searchResults);
+        return (searchResults);
     }
 
     private filterResultsByBlackList(items: SearchResultItem[], blackList: string[]) {
